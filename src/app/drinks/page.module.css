@@ -1,0 +1,252 @@
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Coffee steam rising animation */
+@keyframes steamRise {
+    0% {
+        opacity: 0.6;
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(1.3);
+    }
+}
+
+/* Coffee bean rotation */
+@keyframes rotateBeans {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+.header {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    background: linear-gradient(135deg, #2C1810 0%, #4A2C1A 50%, #2C1810 100%);
+    color: #F5F5DC;
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 20px rgba(44, 24, 16, 0.4), inset 0 1px 0 rgba(218, 165, 32, 0.2);
+    animation: fadeIn 0.8s ease forwards;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+}
+
+.header h1 {
+    color: #F5F5DC;
+}
+
+/* Coffee stain ring effect on header */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(139, 69, 19, 0.15);
+    box-shadow:
+        inset 0 0 10px rgba(139, 69, 19, 0.1),
+        0 0 20px rgba(139, 69, 19, 0.05);
+    animation: fadeIn 1.2s ease forwards;
+}
+
+/* Coffee bean decorations */
+.header::after {
+    content: '☕';
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 40px;
+    opacity: 0.2;
+    animation: rotateBeans 4s ease-in-out infinite;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
+}
+
+.productCard {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.15);
+    transition: var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+/* Coffee stain watermark on card */
+.productCard::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 69, 19, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Coffee bean accent in corner */
+.productCard::after {
+    content: '☕';
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 24px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Stagger animation for cards */
+.productCard:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.productCard:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.productCard:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.productCard:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.productCard:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.productCard:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.productCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(44, 24, 16, 0.25), 0 0 0 3px rgba(218, 165, 32, 0.2);
+    border-color: rgba(218, 165, 32, 0.4);
+}
+
+/* Coffee steam effect on hover */
+.productCard:hover::before {
+    animation: steamRise 2s ease-out infinite;
+    background: radial-gradient(circle, rgba(139, 69, 19, 0.08) 0%, transparent 70%);
+}
+
+.imageContainer {
+    height: 220px;
+    width: 380px;
+    background: linear-gradient(135deg, #F5F5DC 0%, #E8DCC7 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid rgba(139, 69, 19, 0.1);
+}
+
+.imageContainer>div {
+    transition: transform 0.5s ease;
+}
+
+.productCard:hover .imageContainer>div {
+    transform: scale(1.05);
+}
+
+.productInfo {
+    padding: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productName {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.productDesc {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.productFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid #eee;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+}
+
+.addToCartBtn {
+    background-color: var(--color-primary);
+    color: var(--color-gold);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.addToCartBtn:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}

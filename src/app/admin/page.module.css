@@ -1,0 +1,236 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.ordersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.orderCard {
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid #eee;
+    padding-bottom: var(--spacing-sm);
+}
+
+.orderId {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.orderDate {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.customerInfo {
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.customerInfo p {
+    margin-bottom: 0.2rem;
+}
+
+.itemsList {
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid #eee;
+}
+
+.statusForm {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.select {
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #ccc;
+    flex-grow: 1;
+}
+
+.updateBtn {
+    padding: 8px 16px;
+    background-color: var(--color-primary);
+    color: var(--color-gold);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+}
+
+.statusPending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.ordersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.orderCard {
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid #eee;
+    padding-bottom: var(--spacing-sm);
+}
+
+.orderId {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.orderDate {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.customerInfo {
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.customerInfo p {
+    margin-bottom: 0.2rem;
+}
+
+.itemsList {
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+}
+
+.total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid #eee;
+}
+
+.statusForm {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.select {
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #ccc;
+    flex-grow: 1;
+}
+
+.updateBtn {
+    padding: 8px 16px;
+    background-color: var(--color-primary);
+    color: var(--color-gold);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-sm);
+}
+
+.statusPending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.statusPreparing {
+    background-color: #b8daff;
+    color: #004085;
+}
+
+.statusOnDelivery {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.statusCompleted {
+    background-color: #c3e6cb;
+    color: #155724;
+}

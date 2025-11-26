@@ -1,0 +1,177 @@
+.userListContainer {
+    padding: 0;
+}
+
+.userListContainer h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: rgba(255, 248, 240, 0.9);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(101, 67, 33, 0.2), rgba(139, 69, 19, 0.15));
+    border-radius: 12px;
+    border: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.emptyState p {
+    color: rgba(255, 248, 240, 0.8);
+    font-size: 1.1rem;
+}
+
+.userGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.userCard {
+    background: linear-gradient(135deg,
+            rgba(101, 67, 33, 0.25),
+            rgba(78, 52, 46, 0.2));
+    border: 2px solid rgba(139, 69, 19, 0.3);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(44, 25, 14, 0.3);
+}
+
+.userCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(44, 25, 14, 0.5);
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg,
+            rgba(101, 67, 33, 0.35),
+            rgba(78, 52, 46, 0.3));
+}
+
+.userAvatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #d9451f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+    border: 3px solid rgba(255, 248, 240, 0.2);
+}
+
+.userAvatar span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.userInfo {
+    margin-bottom: 1.25rem;
+}
+
+.userInfo h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff8f0;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(44, 25, 14, 0.3);
+}
+
+.userInfo p {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #fff8f0;
+    margin: 0.75rem 0;
+    padding: 0.5rem 0.75rem;
+    background: rgba(139, 69, 19, 0.15);
+    border-radius: 8px;
+    border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--primary-color);
+}
+
+.email {
+    color: #fff8f0;
+    font-weight: 600;
+}
+
+.phone,
+.address {
+    color: rgba(255, 248, 240, 0.95);
+    font-weight: 500;
+}
+
+.userStats {
+    padding-top: 1.25rem;
+    border-top: 2px solid rgba(139, 69, 19, 0.3);
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: rgba(255, 248, 240, 0.9);
+    font-weight: 600;
+}
+
+.statValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--primary-color), #d9451f);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.totalCount {
+    padding: 1.5rem;
+    background: linear-gradient(135deg,
+            rgba(101, 67, 33, 0.3),
+            rgba(139, 69, 19, 0.2));
+    border: 2px solid rgba(139, 69, 19, 0.3);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #fff8f0;
+    font-weight: 600;
+}
+
+.totalCount strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .userGrid {
+        grid-template-columns: 1fr;
+    }
+}

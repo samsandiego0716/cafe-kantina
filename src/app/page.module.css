@@ -1,0 +1,192 @@
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blurred background image layer */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(44, 24, 16, 0.7), rgba(44, 24, 16, 0.7)), url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+.heroContent {
+  max-width: 800px;
+  padding: var(--spacing-md);
+  z-index: 1;
+}
+
+.heroContent h1 {
+  font-size: 5rem;
+  color: var(--color-cream);
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: slideDown 1s ease forwards;
+}
+
+.heroContent p {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-cream);
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+  /* Start hidden for animation */
+}
+
+/* Button animation is handled by global .btn classes, but we can add specific delay if needed */
+.heroContent a {
+  animation: slideUp 1s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
+  background-color: var(--color-cream);
+  color: var(--color-primary);
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: 10px auto 0;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.featureCard {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+  border: 1px solid transparent;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-gold);
+}
+
+.featureIcon {
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  transition: var(--transition-normal);
+}
+
+.featureCard:hover .featureIcon {
+  transform: scale(1.1) rotate(5deg);
+  color: var(--color-gold);
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 3rem;
+  }
+
+  .heroContent p {
+    font-size: 1.2rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 2.2rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}

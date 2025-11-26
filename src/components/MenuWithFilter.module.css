@@ -1,0 +1,138 @@
+.filterContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.filterButton {
+    padding: 8px 16px;
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filterButton:hover,
+.filterButton.active {
+    background-color: var(--color-primary);
+    color: var(--color-cream);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.productCard {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.imageContainer {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.productCard:hover .imageContainer img {
+    transform: scale(1.05);
+}
+
+.productInfo {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productName {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.productDesc {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.productFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.controlsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sortContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.sortSelect {
+    padding: 8px 16px;
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    background: white;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    outline: none;
+}
+
+.sortSelect:hover {
+    background-color: #f8f8f8;
+}
+
+@media (min-width: 768px) {
+    .controlsContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .filterContainer {
+        margin-bottom: 0;
+    }
+}

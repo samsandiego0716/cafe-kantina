@@ -9,9 +9,12 @@ export default function AdminLogin({ onLoginSuccess }) {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    // Single admin account credentials
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "admin123";
+    // Admin credentials from environment variables
+    // For production: Set NEXT_PUBLIC_ADMIN_USERNAME and NEXT_PUBLIC_ADMIN_PASSWORD in Vercel
+    // For local: These will fall back to admin/admin123 if env vars are not set
+    // Updated: 2024-11-26
+    const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USERNAME || "admin";
+    const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "admin123";
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +23,7 @@ export default function AdminLogin({ onLoginSuccess }) {
 
         // Simulate a small delay for better UX
         setTimeout(() => {
+
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
                 // Store admin session
                 localStorage.setItem("adminAuth", "true");

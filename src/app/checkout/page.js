@@ -166,9 +166,10 @@ export default function CheckoutPage() {
                         </div>
 
                         <div className={styles.formGroup}>
+                            <label className={styles.label}>Payment Method</label>
                             <select name="paymentMethod" className={styles.select}>
                                 <option value="COD">Cash on Delivery</option>
-                                <option value="GCash">GCash</option>
+                                <option value="GCash">GCash - 09637323984</option>
                             </select>
                         </div>
 

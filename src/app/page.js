@@ -11,8 +11,8 @@ export default function Home() {
     { image: '/images/gallery/gallery-3.jpg', text: 'Nature Cup' },
     { image: '/images/gallery/gallery-4.jpg', text: 'Waterfall' },
     { image: '/images/gallery/gallery-5.jpg', text: 'Apple Sour' },
-    { image: '/images/gallery/gallery-6.jpg', text: 'Berry Milk' },
-    { image: '/images/gallery/gallery-7.jpg', text: 'Spanish Latte' },
+    { image: '/images/gallery/gallery-6.jpg', text: 'Spanish Latte' },
+    { image: '/images/gallery/gallery-7.jpg', text: 'Berry Milk' },
     { image: '/images/gallery/gallery-8.jpg', text: 'Mocha' },
   ];
 

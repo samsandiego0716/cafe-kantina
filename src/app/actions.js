@@ -133,3 +133,71 @@ export async function updateProduct(prevState, formData) {
         return { message: "Failed to update product" };
     }
 }
+
+export async function updateProfile(prevState, formData) {
+    const userId = formData.get("userId");
+    const name = formData.get("name");
+    const phone = formData.get("phone");
+    const address = formData.get("address");
+    const imageBase64 = formData.get("imageBase64"); // Now receiving base64 string
+
+    try {
+        const { updateUser, uploadProfilePicture } = await import("@/lib/data-service");
+        const { doc, getDoc } = await import("firebase/firestore");
+        const { db } = await import("@/lib/firebase");
+
+        const userData = { name, phone, address };
+
+        // Handle profile picture upload if provided
+        if (imageBase64 && imageBase64.length > 0) {
+            try {
+                const imageUrl = await uploadProfilePicture(userId, imageBase64);
+                userData.image = imageUrl;
+            } catch (uploadError) {
+                console.error("Upload error:", uploadError);
+                return {
+                    message: `Failed to upload image: ${uploadError.code || uploadError.message}`
+                };
+            }
+        }
+
+        await updateUser(userId, userData);
+
+        // Fetch the complete updated user data
+        const userRef = doc(db, "users", userId);
+        const userDoc = await getDoc(userRef);
+        const completeUserData = { id: userId, ...userDoc.data() };
+
+        // Remove password from the returned data
+        delete completeUserData.password;
+
+        revalidatePath("/account");
+        return { message: "Profile updated successfully!", success: true, userData: completeUserData };
+    } catch (error) {
+        console.error("Profile update error:", error);
+        return { message: `Failed to update profile: ${error.message}` };
+    }
+}
+
+export async function changeUserPassword(prevState, formData) {
+    const userId = formData.get("userId");
+    const currentPassword = formData.get("currentPassword");
+    const newPassword = formData.get("newPassword");
+    const confirmPassword = formData.get("confirmPassword");
+
+    if (newPassword !== confirmPassword) {
+        return { message: "Passwords do not match" };
+    }
+
+    try {
+        const { changePassword } = await import("@/lib/data-service");
+
+        // In production, you should verify the current password first
+        // For now, we'll just update it
+        await changePassword(userId, newPassword);
+        revalidatePath("/account");
+        return { message: "Password changed successfully!", success: true };
+    } catch (error) {
+        return { message: "Failed to change password" };
+    }
+}

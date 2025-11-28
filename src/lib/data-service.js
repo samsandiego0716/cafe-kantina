@@ -240,3 +240,37 @@ export function subscribeToPendingOrdersCount(userPhone, callback) {
 
     return unsubscribe;
 }
+
+export async function updateUser(userId, userData) {
+    try {
+        const userRef = doc(db, "users", userId);
+        await updateDoc(userRef, userData);
+        return { id: userId, ...userData };
+    } catch (error) {
+        console.error('Error updating user:', error);
+        throw error;
+    }
+}
+
+export async function changePassword(userId, newPassword) {
+    try {
+        const userRef = doc(db, "users", userId);
+        await updateDoc(userRef, { password: newPassword });
+        return { success: true };
+    } catch (error) {
+        console.error('Error changing password:', error);
+        throw error;
+    }
+}
+
+export async function uploadProfilePicture(userId, base64Image) {
+    try {
+        // Update user profile with base64 image
+        await updateUser(userId, { image: base64Image });
+
+        return base64Image;
+    } catch (error) {
+        console.error('Error uploading profile picture:', error);
+        throw error;
+    }
+}

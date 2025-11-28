@@ -38,7 +38,11 @@ export default function UserList({ users }) {
                     {filteredUsers.map((user, index) => (
                         <div key={user.email || index} className={styles.userCard}>
                             <div className={styles.userAvatar}>
-                                <span>{user.name ? user.name.charAt(0).toUpperCase() : "U"}</span>
+                                {user.image ? (
+                                    <img src={user.image} alt={user.name} />
+                                ) : (
+                                    <span>{user.name ? user.name.charAt(0).toUpperCase() : "U"}</span>
+                                )}
                             </div>
                             <div className={styles.userInfo}>
                                 <h3>{user.name}</h3>

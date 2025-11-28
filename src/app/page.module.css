@@ -169,11 +169,23 @@
   }
 
   .featuredGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 0.8fr;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero {
     height: 70vh;
+  }
+
+  .featureIcon {
+    width: 32px !important;
+    height: 32px !important;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .featureCard {
+    padding: var(--spacing-md) var(--spacing-sm);
   }
 }
 

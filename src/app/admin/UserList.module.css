@@ -1,19 +1,59 @@
 .userListContainer {
-    padding: 0;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg,
+            rgba(101, 67, 33, 0.15),
+            rgba(139, 69, 19, 0.1));
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(139, 69, 19, 0.3);
 }
 
 .userListContainer h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
     color: rgba(255, 248, 240, 0.9);
     font-size: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     font-weight: 500;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.searchContainer {
+    flex: 1;
+    max-width: 400px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(139, 69, 19, 0.25);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #654321;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+    background: #ffffff;
 }
 
 .emptyState {
@@ -171,6 +211,26 @@
 }
 
 @media (max-width: 768px) {
+    .userListContainer {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .userListContainer h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .searchContainer {
+        max-width: 100%;
+    }
+
     .userGrid {
         grid-template-columns: 1fr;
     }

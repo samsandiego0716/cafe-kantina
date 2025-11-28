@@ -1,11 +1,13 @@
 .navbar {
-    background-color: rgba(44, 24, 16, 0.95);
+    background-color: rgba(44, 24, 16, 100);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: var(--color-cream);
     padding: var(--spacing-sm) 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);

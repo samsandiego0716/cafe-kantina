@@ -15,7 +15,14 @@ export default function ProductList({ products }) {
     const [editData, setEditData] = useState({});
     const [imagePreview, setImagePreview] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
     const [state, formAction, isPending] = useActionState(updateProduct, initialState);
+
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const handleDelete = async (productId) => {
         if (confirm("Are you sure you want to delete this product?")) {
@@ -66,9 +73,20 @@ export default function ProductList({ products }) {
 
     return (
         <div className={styles.productListContainer}>
-            <h2>Manage Products</h2>
+            <div className={styles.header}>
+                <h2>Manage Products</h2>
+                <div className={styles.searchContainer}>
+                    <input
+                        type="text"
+                        placeholder="Search products..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className={styles.searchInput}
+                    />
+                </div>
+            </div>
             <div className={styles.productGrid}>
-                {products.map((product) => (
+                {filteredProducts.map((product) => (
                     <div key={product.id} className={styles.productCard}>
                         {editingId === product.id ? (
                             // Edit Mode

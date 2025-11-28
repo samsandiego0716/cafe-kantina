@@ -1,21 +1,41 @@
-"use client";
-
+import { useState } from "react";
 import styles from "./UserList.module.css";
 
 export default function UserList({ users }) {
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredUsers = users.filter(user =>
+        (user.name && user.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (user.phone && user.phone.includes(searchTerm))
+    );
+
     return (
         <div className={styles.userListContainer}>
-            <h2>Registered Users</h2>
-            <p className={styles.subtitle}>Monitor and view all customer accounts</p>
+            <div className={styles.header}>
+                <div>
+                    <h2>Registered Users</h2>
+                    <p className={styles.subtitle}>Monitor and view all customer accounts</p>
+                </div>
+                <div className={styles.searchContainer}>
+                    <input
+                        type="text"
+                        placeholder="Search users..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className={styles.searchInput}
+                    />
+                </div>
+            </div>
 
-            {users.length === 0 ? (
+            {filteredUsers.length === 0 ? (
                 <div className={styles.emptyState}>
                     <span className={styles.emptyIcon}>👥</span>
-                    <p>No registered users yet</p>
+                    <p>No users found matching "{searchTerm}"</p>
                 </div>
             ) : (
                 <div className={styles.userGrid}>
-                    {users.map((user, index) => (
+                    {filteredUsers.map((user, index) => (
                         <div key={user.email || index} className={styles.userCard}>
                             <div className={styles.userAvatar}>
                                 <span>{user.name ? user.name.charAt(0).toUpperCase() : "U"}</span>

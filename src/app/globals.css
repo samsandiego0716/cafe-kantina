@@ -196,3 +196,14 @@ button {
 .animate-slide-up {
   animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+.main-content {
+  min-height: 80vh;
+  padding-top: 140px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 120px;
+  }
+}

@@ -159,6 +159,7 @@ button {
 
 .btn-primary:hover {
   background-color: var(--color-gold);
+  color: var(--color-primary);
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
 }

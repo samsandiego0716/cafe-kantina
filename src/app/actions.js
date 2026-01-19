@@ -31,13 +31,17 @@ export async function updateOrder(formData) {
     const orderId = formData.get("orderId");
     const status = formData.get("status");
 
+    console.log('Server: updateOrder called with:', { orderId, status });
+
     try {
         await updateOrderStatus(orderId, status);
+        console.log('Server: Order status updated successfully');
         revalidatePath("/admin");
         revalidatePath("/account");
         return { message: "Order updated successfully" };
     } catch (error) {
-        return { message: "Failed to update order" };
+        console.error('Server: Error in updateOrder:', error);
+        return { message: "Failed to update order", error: error.message };
     }
 }
 

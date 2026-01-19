@@ -6,7 +6,7 @@ import ProductForm from "./ProductForm";
 import ProductList from "./ProductList";
 import UserList from "./UserList";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { getStoreStatus, updateStoreStatus } from "@/lib/data-service";
 
 export default function AdminContent({ products, sortedOrders, users, styles, updateOrder }) {
@@ -14,6 +14,7 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
     const [statusLoading, setStatusLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [authLoading, setAuthLoading] = useState(true);
+    const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
         // Check auth
@@ -48,6 +49,25 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
             console.error("Failed to update store status", error);
             setIsStoreOpen(!newState); // Revert on error
         }
+    };
+
+    const handleStatusSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        console.log('Form submitted with data:', {
+            orderId: formData.get('orderId'),
+            status: formData.get('status')
+        });
+
+        startTransition(async () => {
+            try {
+                const result = await updateOrder(formData);
+                console.log('Update result:', result);
+            } catch (error) {
+                console.error('Error updating order:', error);
+            }
+        });
     };
 
     if (authLoading) {
@@ -173,7 +193,7 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
                                         Total: ₱{order.total}
                                     </div>
 
-                                    <form action={updateOrder} className={styles.statusForm}>
+                                    <form onSubmit={handleStatusSubmit} className={styles.statusForm}>
                                         <input type="hidden" name="orderId" value={order.id} />
                                         <select name="status" defaultValue={order.status} className={styles.select}>
                                             <option value="Pending">Pending</option>
@@ -182,7 +202,9 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
                                             <option value="Completed">Completed</option>
                                             <option value="Cancelled">Cancelled</option>
                                         </select>
-                                        <button type="submit" className={styles.updateBtn}>Update</button>
+                                        <button type="submit" className={styles.updateBtn} disabled={isPending}>
+                                            {isPending ? 'Updating...' : 'Update'}
+                                        </button>
                                     </form>
                                 </div>
                             ))}

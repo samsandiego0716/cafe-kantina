@@ -1,6 +1,9 @@
 import { db } from './firebase';
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc, setDoc, query, where, getDoc, onSnapshot } from 'firebase/firestore';
 
+// Export chat service functions
+export * from './chat-service';
+
 export async function getProducts() {
     try {
         const querySnapshot = await getDocs(collection(db, "products"));

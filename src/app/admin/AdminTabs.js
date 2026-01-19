@@ -11,6 +11,7 @@ export default function AdminTabs({ children }) {
         { id: "manage-products", label: "Manage Products", icon: "📦" },
         { id: "orders", label: "Order History", icon: "📋" },
         { id: "users", label: "Users", icon: "👥" },
+        { id: "support-chat", label: "Support Chat", icon: "💬" },
     ];
 
     return (
@@ -31,7 +32,7 @@ export default function AdminTabs({ children }) {
 
             <div className={styles.tabContent}>
                 {children.map((child, index) => {
-                    const tabIds = ["add-product", "manage-products", "orders", "users"];
+                    const tabIds = ["add-product", "manage-products", "orders", "users", "support-chat"];
                     return (
                         <div
                             key={index}

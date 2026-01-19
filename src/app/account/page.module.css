@@ -75,7 +75,7 @@
 .avatarPlaceholder {
     font-size: 3rem;
     font-weight: 700;
-    color: white;
+    color: rgb(0, 0, 0);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -87,7 +87,7 @@
 }
 
 .userEmail {
-    color: rgba(255, 248, 240, 0.8);
+    color: rgb(0, 0, 0);
     font-size: 0.95rem;
     margin: 0;
 }
@@ -98,6 +98,7 @@
 }
 
 .detailRow {
+    color: black;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -113,7 +114,7 @@
 }
 
 .value {
-    color: rgba(255, 248, 240, 0.9);
+    color: rgb(0, 0, 0);
 }
 
 .editBtn {
@@ -310,7 +311,7 @@
 
 .emptyMessage {
     text-align: center;
-    color: rgba(255, 248, 240, 0.6);
+    color: rgb(0, 0, 0);
     font-size: 1.1rem;
     padding: 2rem;
 }

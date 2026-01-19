@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const CartContext = createContext();
 
@@ -20,7 +20,7 @@ export function CartProvider({ children }) {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
-    const addToCart = (product) => {
+    const addToCart = useCallback((product) => {
         setCart((prevCart) => {
             const existingItem = prevCart.find((item) => item.id === product.id && item.size === (product.size || "Small"));
             if (existingItem) {
@@ -32,22 +32,22 @@ export function CartProvider({ children }) {
             }
             return [...prevCart, { ...product, quantity: 1, size: product.size || "Small" }];
         });
-    };
+    }, []);
 
-    const removeFromCart = (productId, size) => {
+    const removeFromCart = useCallback((productId, size) => {
         setCart((prevCart) => prevCart.filter((item) => !(item.id === productId && item.size === size)));
-    };
+    }, []);
 
-    const updateQuantity = (productId, size, quantity) => {
+    const updateQuantity = useCallback((productId, size, quantity) => {
         if (quantity < 1) return;
         setCart((prevCart) =>
             prevCart.map((item) =>
                 item.id === productId && item.size === size ? { ...item, quantity } : item
             )
         );
-    };
+    }, []);
 
-    const updateSize = (productId, oldSize, newSize) => {
+    const updateSize = useCallback((productId, oldSize, newSize) => {
         setCart((prevCart) =>
             prevCart.map((item) =>
                 item.id === productId && item.size === oldSize
@@ -55,11 +55,11 @@ export function CartProvider({ children }) {
                     : item
             )
         );
-    };
+    }, []);
 
-    const clearCart = () => {
+    const clearCart = useCallback(() => {
         setCart([]);
-    };
+    }, []);
 
     const cartTotal = cart.reduce((total, item) => {
         const price = item.size === "Large" ? (item.largePrice || item.price + 10) : item.price;

@@ -5,6 +5,7 @@ import AdminTabs from "./AdminTabs";
 import ProductForm from "./ProductForm";
 import ProductList from "./ProductList";
 import UserList from "./UserList";
+import AdminChatPanel from "./AdminChatPanel";
 
 import { useState, useEffect, useTransition } from "react";
 import { getStoreStatus, updateStoreStatus } from "@/lib/data-service";
@@ -154,7 +155,7 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
                     <h2 style={{ marginBottom: '1.5rem', fontSize: '1.8rem', fontWeight: 700, color: 'var(--primary-color)' }}>Order History</h2>
 
                     {sortedOrders.length === 0 ? (
-                        <p style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.6)', fontSize: '1.1rem' }}>No orders yet.</p>
+                        <p style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 1)', fontSize: '1.1rem' }}>No orders yet.</p>
                     ) : (
                         <div className={styles.ordersGrid}>
                             {sortedOrders.map((order) => (
@@ -215,6 +216,11 @@ export default function AdminContent({ products, sortedOrders, users, styles, up
                 {/* Tab 4: Users */}
                 <div>
                     <UserList users={users} />
+                </div>
+
+                {/* Tab 5: Support Chat */}
+                <div>
+                    <AdminChatPanel />
                 </div>
             </AdminTabs>
         </div>
